@@ -7,6 +7,7 @@
 #include "HGCalHistogramFiller.hpp"
 #include "HistogramsHandler.hpp"
 #include "HistogramsFiller.hpp"
+#include "Logger.hpp"
 
 using namespace std;
 
@@ -34,5 +35,9 @@ int main(int argc, char **argv) {
   }
 
   histogramsHandler->SaveHistograms();
+
+  auto &logger = Logger::GetInstance();
+  logger.Print();
+
   return 0;
 }

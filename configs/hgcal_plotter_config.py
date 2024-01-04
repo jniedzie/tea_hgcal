@@ -5,9 +5,9 @@ from Legend import Legend
 from Histogram import Histogram, Histogram2D
 from HistogramNormalizer import NormalizationType
 
-base_path = "/Users/jeremi/Documents/Physics/DESY/hgcal/data/beamtest_ReReco_"
+base_path = "/Users/jeremi/Documents/Physics/DESY/hgcal/data.nosync/beamtest_ReReco_"
 
-output_path = "../plots"
+output_path = "../plots/pedestal/"
 
 # data&signals must be listed after backgrounds for now
 samples = (
@@ -83,18 +83,18 @@ samples = (
   #   marker_size=1.0,
   #   legend_description="Pedestal (did nothing)"
   # ),
-  Sample(
-    name="Run_1695472275_pedestal_pedestalSubtraction_Oct24",
-    file_path=f"{base_path}Oct24/Run1695472275_Run1695472275_Link2_File0000000000_NANO_pedestalSubtraction_hists.root", 
-    type=SampleType.background,
-    line_alpha=1.0,
-    line_color=ROOT.kBlue,
-    line_width=2,
-    fill_color=41,
-    fill_alpha=0.0,
-    marker_size=1.0,
-    legend_description="Old pedestal"
-  ),
+  # Sample(
+  #   name="Run_1695472275_pedestal_pedestalSubtraction_Oct24",
+  #   file_path=f"{base_path}Oct24/Run1695472275_Run1695472275_Link2_File0000000000_NANO_pedestalSubtraction_hists.root", 
+  #   type=SampleType.background,
+  #   line_alpha=1.0,
+  #   line_color=ROOT.kBlue,
+  #   line_width=2,
+  #   fill_color=41,
+  #   fill_alpha=0.0,
+  #   marker_size=1.0,
+  #   legend_description="Old pedestal"
+  # ),
   
   # Sample(
   #   name="Run_1695472275_pedestal_doNothing",
@@ -139,11 +139,11 @@ histograms = (
   Histogram("HGC_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
   # Histogram("HGC_adcm1",          "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC_{-1} Counts",            "Counts"),
   # Histogram("HGC_captureBlock",   "", False, NormalizationType.none, 1,      -5 ,    5  ,  -1,  -1,  "Capture Block",              "Counts"),
-  # Histogram("HGC_chType",         "", True,  NormalizationType.none, 1,      -5 ,    5  ,  -1,  -1,  "Channel Type",               "Counts"),
-  # Histogram("HGC_detid",          "", False, NormalizationType.none, 1,     -100,   100 ,  -1,  -1,  "Detector ID",                "Counts"),
-  # Histogram("HGC_econdIdx",       "", False, NormalizationType.none, 1,      -5 ,    10 ,  -1,  -1,  "ECON-D Index",               "Counts"),
-  # Histogram("HGC_econdeRx",       "", True,  NormalizationType.none, 1,      -5 ,    10 ,  -1,  -1,  "ECON-D eRx",                 "Counts"),
-  # Histogram("HGC_eleid",          "", True,  NormalizationType.none, 1,     -100,  1000 ,  -1,  -1,  "Electronics ID",             "Counts"),
+  Histogram("HGC_chType",         "", True,  NormalizationType.none, 1,      -5 ,    5  ,  -1,  -1,  "Channel Type",               "Counts"),
+  Histogram("HGC_detid",          "", False, NormalizationType.none, 1,     -100,   100 ,  -1,  -1,  "Detector ID",                "Counts"),
+  Histogram("HGC_econdIdx",       "", False, NormalizationType.none, 1,      -5 ,    10 ,  -1,  -1,  "ECON-D Index",               "Counts"),
+  Histogram("HGC_econdeRx",       "", True,  NormalizationType.none, 1,      -5 ,    10 ,  -1,  -1,  "ECON-D eRx",                 "Counts"),
+  Histogram("HGC_eleid",          "", True,  NormalizationType.none, 1,     -100,  1000 ,  -1,  -1,  "Electronics ID",             "Counts"),
   Histogram("HGC_energy",         "", True,  NormalizationType.none, 1,   -500, 1000 ,  -1,  -1,  "Charge (fC)",               "Counts"),
   # Histogram("HGC_fedId",          "", False, NormalizationType.none, 1,      -5 ,    10 ,  -1,  -1,  "FED ID",                     "Counts"),
   # Histogram("HGC_flags",          "", False, NormalizationType.none, 1,      -10,    10 ,  -1,  -1,  "Flags",                      "Counts"),
@@ -151,7 +151,7 @@ histograms = (
   # Histogram("HGC_halfrocChannel", "", True,  NormalizationType.none, 1,      -10,   200 ,  -1,  -1,  "Half ROC Channel",           "Counts"),
   # Histogram("HGC_isCM",           "", False, NormalizationType.none, 1,      -10,    10 ,  -1,  -1,  "is Common Mode",             "Counts"),
   # Histogram("HGC_isHD",           "", False, NormalizationType.none, 1,      -10,    10 ,  -1,  -1,  "is HD",                      "Counts"),
-  # Histogram("HGC_layer",          "", False, NormalizationType.none, 1,       -5,    10 ,  -1,  -1,  "Layer",                      "Counts"),
+  Histogram("HGC_layer",          "", False, NormalizationType.none, 1,       -5,    10 ,  -1,  -1,  "Layer",                      "Counts"),
   # Histogram("HGC_roc",            "", False, NormalizationType.none, 1,       -5,    10 ,  -1,  -1,  "ROC",                        "Counts"),
   # Histogram("HGC_tctp",           "", True,  NormalizationType.none, 1,       -5,    10 ,  -1,  -1,  "TCTP",                       "Counts"),
   # Histogram("HGC_time",           "", True,  NormalizationType.none, 1,      -10,    30 ,  -1,  -1,  "Time (ns)",                  "Counts"),
@@ -164,7 +164,23 @@ histograms = (
   # Histogram("HGC_x",              "", False, NormalizationType.none, 1,      -20,    20 ,  -1,  -1,  "x (cm)",                     "Counts"),
   # Histogram("HGC_y",              "", False, NormalizationType.none, 1,      -20,    20 ,  -1,  -1,  "y (cm)",                     "Counts"),
   # Histogram("HGC_zSide",          "", False, NormalizationType.none, 1,      -10,    10 ,  -1,  -1,  "Z-side",                     "Counts"), 
+  
+  # Histogram("HGC_eleid_2_chType_0_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
+  # Histogram("HGC_eleid_2_chType_1_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
+  # Histogram("HGC_eleid_2_chType_2_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
+  
+  Histogram("HGC_chType_0_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
+  Histogram("HGC_chType_1_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
+  Histogram("HGC_chType_2_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
 )
+
+for i in range(7):
+  histograms += (
+    Histogram(f"HGC_eleid_{i+1}_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
+    Histogram(f"HGC_eleid_{i+1}_eleid",          "", True,  NormalizationType.none, 1,     -100,  1000 ,  -1,  -1,  "Electronics ID",             "Counts"),
+    Histogram(f"HGC_eleid_{i+1}_energy",         "", True,  NormalizationType.none, 1,   -500, 1000 ,  -1,  -1,  "Charge (fC)",               "Counts"),
+  )
+
 histograms2D = (
 # 2D histograms
 #           name              title    rebin  xmin    xmax       ymin   ymax     zmin zmax xlabel               ylabel                        zlabel

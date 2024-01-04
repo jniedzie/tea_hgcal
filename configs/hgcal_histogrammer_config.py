@@ -1,5 +1,5 @@
 nEvents = 1000
-printEveryNevents = 1000
+printEveryNevents = 100
 
 base_path = "/Users/jeremi/Documents/Physics/DESY/hgcal/data.nosync/"
 
@@ -19,14 +19,58 @@ reco_campaign = "Nov22"
 # histogramsOutputFilePath = f"{base_path}beamtest_ReReco_{reco_campaign}/Run1695496516_Run1695496516_Link2_File0000000000_NANO_hists.root"
 
 # pedestal
-suffix = ""
-# suffix = "_pedestalSubtraction"
+# suffix = ""
+suffix = "_pedestalSubtraction"
 # suffix = "_doNothing"
 inputFilePath = f"{base_path}beamtest_ReReco_{reco_campaign}/Run1695472275_Run1695472275_Link2_File0000000000_NANO{suffix}.root"
 histogramsOutputFilePath = f"{base_path}beamtest_ReReco_{reco_campaign}/Run1695472275_Run1695472275_Link2_File0000000000_NANO{suffix}_hists.root"
 
 # inputFilePath = f"{base_path}beamtest_ReReco_{reco_campaign}/Run1695563152_Run1695563152_Link1_File0000000000_NANO.root"
 # histogramsOutputFilePath = f"{base_path}beamtest_ReReco_{reco_campaign}/Run1695563152_Run1695563152_Link1_File0000000000_NANO_hists.root"
+
+extraEventCollections = {
+    "HGC_eleid_1": {
+      "inputCollections": ("HGC",),
+      "eleid": (0, 50),
+    },
+    "HGC_eleid_2": {
+      "inputCollections": ("HGC",),
+      "eleid": (50, 110),
+    },
+    "HGC_eleid_3": {
+      "inputCollections": ("HGC",),
+      "eleid": (110, 170),
+    },
+    "HGC_eleid_4": {
+      "inputCollections": ("HGC",),
+      "eleid": (170, 250),
+    },
+    "HGC_eleid_5": {
+      "inputCollections": ("HGC",),
+      "eleid": (250, 300),
+    },
+    "HGC_eleid_6": {
+      "inputCollections": ("HGC",),
+      "eleid": (300, 400),
+    },
+    "HGC_eleid_7": {
+      "inputCollections": ("HGC",),
+      "eleid": (400, 999999),
+    },
+        
+    "HGC_chType_0": {
+      "inputCollections": ("HGC",),
+      "chType": (-1.5, -0.5),
+    },
+    "HGC_chType_1": {
+      "inputCollections": ("HGC",),
+      "chType": (-0.5, 0.5),
+    },
+    "HGC_chType_2": {
+      "inputCollections": ("HGC",),
+      "chType": (0.5, 1.5),
+    },
+}
 
 # define default histograms (can be filled automatically with HistogramsFiller, based on collection and variable names)
 defaultHistParams = (
@@ -59,7 +103,18 @@ defaultHistParams = (
   ("HGC",          "x"             , 40   , -20   , 20    , ""),
   ("HGC",          "y"             , 40   , -20   , 20    , ""),
   ("HGC",          "zSide"         , 20   , -10   , 10    , ""),
+  
+  ("HGC_chType_0", "adc"           , 1010 , -10   , 1000  , ""),
+  ("HGC_chType_1", "adc"           , 1010 , -10   , 1000  , ""),
+  ("HGC_chType_2", "adc"           , 1010 , -10   , 1000  , ""),
 )
+
+for i in range(7):
+  defaultHistParams += (
+    (f"HGC_eleid_{i+1}",  "adc"    , 1010 , -10   , 1000  , ""),
+    (f"HGC_eleid_{i+1}",  "eleid"  , 1010 , -10   , 1000  , ""),
+    (f"HGC_eleid_{i+1}",  "energy" , 1000 , -1000 , 1000  , ""),
+  )
 
 # define histograms
 # title: (n_bins, min, max, "output_directory")
