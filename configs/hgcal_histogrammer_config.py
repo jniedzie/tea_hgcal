@@ -70,6 +70,13 @@ extraEventCollections = {
       "inputCollections": ("HGC",),
       "chType": (0.5, 1.5),
     },
+    
+    
+    "GoodRecHits": {
+      "inputCollections": ("HGC",),
+      "eleid": (0, 400),
+      "chType": (-9999., 0.5),
+    },
 }
 
 # define default histograms (can be filled automatically with HistogramsFiller, based on collection and variable names)
@@ -115,6 +122,11 @@ for i in range(7):
     (f"HGC_eleid_{i+1}",  "eleid"  , 1010 , -10   , 1000  , ""),
     (f"HGC_eleid_{i+1}",  "energy" , 1000 , -1000 , 1000  , ""),
   )
+
+for hist in defaultHistParams:
+  if hist[0] == "HGC":
+    newHist = ("GoodRecHits",) + hist[1:]
+    defaultHistParams += (newHist, )
 
 # define histograms
 # title: (n_bins, min, max, "output_directory")

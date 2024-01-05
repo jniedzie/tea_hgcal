@@ -134,7 +134,7 @@ samples = (
   # ),
 )
 
-histograms = (
+histograms = [
 #           name              title             logy   norm_type               rebin  xmin   xmax ymin   ymax   xlabel                        ylabel
   Histogram("HGC_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
   # Histogram("HGC_adcm1",          "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC_{-1} Counts",            "Counts"),
@@ -172,14 +172,16 @@ histograms = (
   Histogram("HGC_chType_0_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
   Histogram("HGC_chType_1_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
   Histogram("HGC_chType_2_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
-)
+  
+  
+  Histogram("GoodRecHits_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
+  Histogram("GoodRecHits_chType",         "", True,  NormalizationType.none, 1,      -5 ,    5  ,  -1,  -1,  "Channel Type",               "Counts"),
+  Histogram("GoodRecHits_detid",          "", False, NormalizationType.none, 1,     -100,   100 ,  -1,  -1,  "Detector ID",                "Counts"),
+  Histogram("GoodRecHits_eleid",          "", True,  NormalizationType.none, 1,     -100,  1000 ,  -1,  -1,  "Electronics ID",             "Counts"),
+  Histogram("GoodRecHits_energy",         "", True,  NormalizationType.none, 1,   -500, 1000 ,  -1,  -1,  "Charge (fC)",               "Counts"),
+]
 
-for i in range(7):
-  histograms += (
-    Histogram(f"HGC_eleid_{i+1}_adc",            "", True,  NormalizationType.none, 5,      -10,  1000 ,  -1,  -1,  "ADC Counts",                 "Counts"),
-    Histogram(f"HGC_eleid_{i+1}_eleid",          "", True,  NormalizationType.none, 1,     -100,  1000 ,  -1,  -1,  "Electronics ID",             "Counts"),
-    Histogram(f"HGC_eleid_{i+1}_energy",         "", True,  NormalizationType.none, 1,   -500, 1000 ,  -1,  -1,  "Charge (fC)",               "Counts"),
-  )
+
 
 histograms2D = (
 # 2D histograms
